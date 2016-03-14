@@ -20,9 +20,9 @@ RUN apt-get update && \
 
 # Install IIB V10 Developer edition
 RUN mkdir /opt/ibm && \
-    curl http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/10.0.0.3-IIB-LINUX64-DEVELOPER.tar.gz \
-    | tar zx --exclude iib-10.0.0.3/tools --directory /opt/ibm && \
-    /opt/ibm/iib-10.0.0.3/iib make registry global accept license silently
+    curl http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/10.0.0.2-IIB-LINUX64-DEVELOPER.tar.gz \
+    | tar zx --exclude iib-10.0.0.2/tools --directory /opt/ibm && \
+    /opt/ibm/iib-10.0.0.2/iib make registry global accept license silently
 
 # Configure system
 COPY kernel_settings.sh /tmp/
@@ -47,7 +47,7 @@ RUN chmod +rx /usr/local/bin/*.sh
 ENV BASH_ENV=/usr/local/bin/iib_env.sh
 
 # Expose default admin port and http port
-EXPOSE 4414 7843
+EXPOSE 4414 7800
 
 USER iibuser
 
